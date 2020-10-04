@@ -1,0 +1,25 @@
+{
+  "name": "slackbullet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^7.2.1",
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amroessam/SlackBullet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amroessam/SlackBullet/issues"
+  },
+  "homepage": "https://github.com/amroessam/SlackBullet#readme"
+}

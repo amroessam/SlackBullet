@@ -1,0 +1,6 @@
+{
+  "webhook_urls": [],
+  "sockets": [
+    "PUSHBULLET_SOCKETS"
+  ]
+}
