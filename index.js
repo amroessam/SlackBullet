@@ -1,6 +1,7 @@
 const WebSocket = require('ws')
 const axois = require('axios')
 const { sockets, webhook_urls } = require('./config')
+const argv = require('yargs').alias('s', 'socket').alias('w', 'webhook').argv
 
 const registerSocket = function (url, websoket) {
   const ws = new WebSocket(`wss://stream.pushbullet.com/websocket/${websoket}`)
@@ -21,5 +22,6 @@ const registerSocket = function (url, websoket) {
     }
   })
 }
-
-webhook_urls.forEach((u) => sockets.forEach((s) => registerSocket(u, s)))
+if (argv.w && argv.s) [argv.w].forEach((u) => [argv.s].forEach((s) => registerSocket(u, s)))
+else if (!argv.w && !argv.s && sockets.length > 0 && webhook_urls.length > 0)
+  webhook_urls.forEach((u) => sockets.forEach((s) => registerSocket(u, s)))
