@@ -10,4 +10,4 @@
 
 
 ## Docker
-`docker run -e SOCKET="PUSHBULLET_SOCKET_KEY" -e WEBHOOK="SLACK_HOOK_SLUG" amroessam/slackbullet:1.0`
+`docker run -e SOCKET="PUSHBULLET_SOCKET_KEY" -e WEBHOOK="SLACK_HOOK_SLUG" amroessam/slackbullet:1.1`
