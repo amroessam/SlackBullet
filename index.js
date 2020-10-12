@@ -8,18 +8,27 @@ const registerSocket = function (url, websoket) {
 
   ws.on('message', function incoming(data) {
     const parsedData = JSON.parse(data)
-    console.log(parsedData)
-    try {
-      axois({
-        method: 'post',
-        url: url,
-        data: {
-          text: `\`\`\`${JSON.stringify(parsedData)}\`\`\``,
-        },
+    if (
+      data.type &&
+      data.type === 'push' &&
+      data.push &&
+      data.push.notifications &&
+      data.push.notifications.length > 0
+    )
+      data.push.notifications.forEach((notification) => {
+        try {
+          axois({
+            method: 'post',
+            url: url,
+            data: {
+              text: `${notification.title}:\n${notification.body}`,
+              icon_emoji: ':envelope:'
+            },
+          })
+        } catch (error) {
+          console.log(error)
+        }
       })
-    } catch (error) {
-      console.log(error)
-    }
   })
 }
 if (argv.w && argv.s) [argv.w].forEach((u) => [argv.s].forEach((s) => registerSocket(u, s)))
