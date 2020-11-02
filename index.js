@@ -32,6 +32,9 @@ const registerSocket = function (url, websoket) {
         }
       })
   })
+  ws.on('error', function(e) {
+    console.log("Pushbulletr error: ", e);
+  });
 }
 if (argv.w && argv.s) [argv.w].forEach((u) => [argv.s].forEach((s) => registerSocket(u, s)))
 else if (!argv.w && !argv.s && sockets.length > 0 && webhook_urls.length > 0)
